@@ -21,10 +21,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist/ /usr/share/nginx/html/
 RUN ls -la /usr/share/nginx/html/
 
-# Sub-apps are added at deploy time or via multi-stage builds.
-# To include 2048, either:
-#   1. Use docker-compose to mount/copy the 2048 build into /usr/share/nginx/html/2048/
-#   2. Or extend this Dockerfile (see docker-compose.yml)
+# Sub-apps are proxied to their own containers via nginx
 
 EXPOSE 80
 
