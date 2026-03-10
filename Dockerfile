@@ -4,20 +4,22 @@ FROM node:20-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 COPY . .
-RUN npm run build
+RUN npm run build && ls -la /app/dist/
 
 # Production stage
 FROM nginx:stable-alpine
 
-# Remove default nginx config and replace with ours
-RUN rm -f /etc/nginx/conf.d/default.conf
+# Remove default nginx welcome page and config
+RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/default.conf
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the hub landing page to the root
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/ /usr/share/nginx/html/
+RUN ls -la /usr/share/nginx/html/
 
 # Sub-apps are added at deploy time or via multi-stage builds.
 # To include 2048, either:
