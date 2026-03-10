@@ -12,7 +12,8 @@ RUN npm run build
 # Production stage
 FROM nginx:stable-alpine
 
-# Copy custom nginx config
+# Remove default nginx config and replace with ours
+RUN rm -f /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the hub landing page to the root
