@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-
 interface AppEntry {
   title: string
   description: string
@@ -19,47 +16,37 @@ const apps: AppEntry[] = [
     tags: ['game', 'react'],
     color: '#f0c850',
   },
-  // Add more apps here as you build them:
-  // {
-  //   title: 'Snake',
-  //   description: 'The retro snake game, reimagined.',
-  //   path: '/snake/',
-  //   icon: '🐍',
-  //   tags: ['game'],
-  //   color: '#50f068',
-  // },
 ]
 
-function AppCard({ app, index }: { app: AppEntry; index: number }) {
+function AppCard({ app, index }: { key?: string; app: AppEntry; index: number }) {
   return (
     <a
       href={app.path}
-      className="app-card"
-      style={
-        {
-          '--card-accent': app.color,
-          animationDelay: `${index * 0.1}s`,
-        } as React.CSSProperties
-      }
+      className="bento-card rounded-[32px] p-8 block group relative overflow-hidden"
+      style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="card-glow" />
-      <div className="card-content">
-        <div className="card-header">
-          <span className="card-icon">{app.icon}</span>
-          <div className="card-tags">
-            {app.tags.map((tag) => (
-              <span key={tag} className="tag">
-                {tag}
-              </span>
-            ))}
-          </div>
+      <div 
+        className="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ backgroundColor: app.color }}
+      />
+      <div className="flex justify-between items-start mb-6">
+        <span className="text-3xl">{app.icon}</span>
+        <div className="flex gap-2">
+          {app.tags.map((tag) => (
+            <span key={tag} className="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-lg text-[10px] uppercase tracking-widest font-bold text-muted">
+              {tag}
+            </span>
+          ))}
         </div>
-        <h2 className="card-title">{app.title}</h2>
-        <p className="card-description">{app.description}</p>
-        <div className="card-footer">
-          <span className="card-link">
-            Open app <span className="arrow">→</span>
-          </span>
+      </div>
+      <h2 className="text-2xl font-bold mb-3">{app.title}</h2>
+      <p className="text-muted text-sm leading-relaxed mb-8">
+        {app.description}
+      </p>
+      <div className="flex items-center justify-between text-sm font-bold mt-auto">
+        <span style={{ color: app.color }}>Launch app</span>
+        <div className="w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center group-hover:translate-x-2 transition-transform duration-300">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </div>
       </div>
     </a>
@@ -67,57 +54,62 @@ function AppCard({ app, index }: { app: AppEntry; index: number }) {
 }
 
 function App() {
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    return (localStorage.getItem('theme') as 'dark' | 'light') ?? 'dark'
-  })
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
-
   return (
-    <div className="hub">
-      <button
-        className="theme-toggle"
-        onClick={toggleTheme}
-        aria-label="Toggle light/dark mode"
-        title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      >
-        {theme === 'dark' ? '☀️' : '🌙'}
-      </button>
-      <div className="bg-grid" />
-      <header className="header">
-        <div className="header-content">
-          <div className="logo-row">
-            <span className="logo-dot" />
-            <span className="logo-text">apps.barczynski.dev</span>
+    <div className="max-w-[1200px] mx-auto px-6 py-12 min-h-screen flex flex-col">
+      {/* Navigation */}
+      <nav className="flex justify-between items-center mb-16">
+        <div className="font-outfit font-bold text-2xl">apps.barczynski<span className="text-muted">.dev</span></div>
+        <div className="hidden md:flex gap-8 text-sm font-medium text-muted">
+          <a href="https://barczynski.dev" className="hover:text-white transition-colors flex items-center gap-2">
+            <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            Back to main site
+          </a>
+        </div>
+        <a href="https://barczynski.dev" className="md:hidden px-4 py-2 bg-neutral-900 text-white text-xs font-bold rounded-full hover:bg-neutral-800 transition-colors">
+          Back
+        </a>
+      </nav>
+
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col items-center">
+        {/* Hero Section */}
+        <div className="text-center mb-16 w-full max-w-2xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[10px] uppercase tracking-widest font-bold text-muted mb-6">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+            Interactive Hub
           </div>
-          <p className="header-sub">
-            A collection of web experiments, tools, and games.
+          <h1 className="text-4xl md:text-6xl font-outfit font-bold mb-6 leading-[1.1]">
+            Web experiments, <span className="text-muted italic">tools</span>, and <span className="text-white">games.</span>
+          </h1>
+          <p className="text-muted text-lg">
+            A collection of interactive projects built by Adam Barczynski.
           </p>
         </div>
-      </header>
 
-      <main className="main">
-        <div className="apps-grid">
+        {/* Apps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mb-16">
           {apps.map((app, i) => (
             <AppCard key={app.path} app={app} index={i} />
           ))}
-        </div>
-
-        <div className="more-coming">
-          <div className="more-coming-icon">+</div>
-          <p>More apps coming soon</p>
+          
+          {/* Coming Soon Card */}
+          <div className="bento-card rounded-[32px] p-8 flex flex-col items-center justify-center text-center min-h-[300px] border-dashed border-neutral-800 opacity-50">
+            <div className="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center text-muted mb-4 text-xl">
+              +
+            </div>
+            <h3 className="font-bold text-lg mb-2">More coming soon</h3>
+            <p className="text-xs text-muted">New experiments are constantly in development.</p>
+          </div>
         </div>
       </main>
 
-      <footer className="footer">
-        <a href="https://barczynski.dev" className="footer-link">
-          barczynski.dev
-        </a>
+      {/* Footer Info */}
+      <footer className="mt-auto pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-muted text-xs font-medium uppercase tracking-[0.2em] border-t border-neutral-900">
+        <div>&copy; 2026 apps.barczynski.dev</div>
+        <div className="flex gap-8">
+          <a href="https://github.com/adambar88" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
+          <a href="https://barczynski.dev" className="hover:text-white transition-colors">Portfolio</a>
+        </div>
       </footer>
     </div>
   )
