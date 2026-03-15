@@ -9,26 +9,9 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#050505">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f0eb">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        dark: '#050505',
-                        card: '#0f0f0f',
-                        accent: '#ffffff',
-                        muted: '#888888',
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --c-bg: #050505;
@@ -40,15 +23,15 @@
             --c-card-border: #1a1a1a;
             --c-card-border-hover: #333;
             --c-tag-bg: #111;
-            --c-tag: #555;
+            --c-tag: #767676;
             --c-tag-border: #222;
             --c-toolbar-bg: #0d0d0d;
             --c-toolbar-border: #1a1a1a;
             --c-btn-active: #1f1f1f;
-            --c-dim: #333;
-            --c-arrow: #555;
+            --c-dim: #767676;
+            --c-arrow: #767676;
             --c-soon-bg: #0a0a0a;
-            --c-soon-text: #2a2a2a;
+            --c-soon-text: #767676;
         }
 
         html[data-theme="light"] {
@@ -93,11 +76,22 @@
         }
 
         @keyframes vt-out {
-            to { opacity: 0; transform: translateY(6px) scale(0.99); }
+            to {
+                opacity: 0;
+                transform: translateY(6px) scale(0.99);
+            }
         }
 
         @keyframes vt-in {
-            from { opacity: 0; transform: translateY(-6px) scale(1.01); }
+            from {
+                opacity: 0;
+                transform: translateY(-6px) scale(1.01);
+            }
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            @view-transition { navigation: none; }
         }
     </style>
 </head>
