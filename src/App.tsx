@@ -72,6 +72,17 @@ function App() {
     localStorage.setItem('barczynski-theme', theme)
   }, [theme])
 
+  useEffect(() => {
+    const onPageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        const stored = (localStorage.getItem('barczynski-theme') as 'dark' | 'light') || 'dark'
+        setTheme(stored)
+      }
+    }
+    window.addEventListener('pageshow', onPageShow)
+    return () => window.removeEventListener('pageshow', onPageShow)
+  }, [])
+
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
 
   return (
