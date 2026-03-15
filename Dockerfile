@@ -15,6 +15,9 @@ FROM nginx:stable-alpine
 # Remove default nginx welcome page and config
 RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/default.conf
 
+# Install wget for health checks
+RUN apk add --no-cache wget
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the hub landing page to the root
