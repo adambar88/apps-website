@@ -86,13 +86,6 @@ function App() {
         <div className="mb-6 flex items-center justify-between">
           <span className="text-xs" style={{ color: 'var(--c-dim)' }}>{apps.length} app{apps.length !== 1 ? 's' : ''}</span>
           <div className="flex items-center gap-3">
-            {/* Theme toggle */}
-            <button onClick={toggleTheme} title="Toggle theme" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', color: 'var(--c-muted)' }}>
-              {theme === 'dark'
-                ? <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                : <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-              }
-            </button>
             {/* View toggles */}
             <div className="flex gap-1 p-1 rounded-md" style={{ background: 'var(--c-toolbar-bg)', border: '1px solid var(--c-toolbar-border)' }}>
               {([['list', <IconList />], ['grid', <IconGrid />], ['compact', <IconCompact />], ['drawer', <IconDrawer />]] as [View, React.ReactNode][]).map(([v, icon]) => (
@@ -253,6 +246,13 @@ function App() {
         </footer>
 
       </div>
+      {/* Theme toggle - fixed top right */}
+      <button onClick={toggleTheme} title="Toggle theme" style={{ position: 'fixed', top: '1rem', right: '1rem', zIndex: 50, background: 'none', border: 'none', cursor: 'pointer', padding: '6px', display: 'flex', alignItems: 'center', color: 'var(--c-muted)' }}>
+        {theme === 'dark'
+          ? <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          : <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        }
+      </button>
     </div>
   )
 }
