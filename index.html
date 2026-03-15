@@ -24,10 +24,25 @@
         }
     </script>
     <style>
+        :root {
+            --c-bg: #050505; --c-text: #fff; --c-muted: #888; --c-muted-hover: #fff;
+            --c-border: #1a1a1a; --c-card: #0d0d0d; --c-card-border: #1a1a1a;
+            --c-card-border-hover: #333; --c-tag-bg: #111; --c-tag: #555; --c-tag-border: #222;
+            --c-toolbar-bg: #0d0d0d; --c-toolbar-border: #1a1a1a; --c-btn-active: #1f1f1f;
+            --c-dim: #333; --c-arrow: #555; --c-soon-bg: #0a0a0a; --c-soon-text: #2a2a2a;
+        }
+        html[data-theme="light"] {
+            --c-bg: #fafafa; --c-text: #0a0a0a; --c-muted: #777; --c-muted-hover: #000;
+            --c-border: #e5e5e5; --c-card: #f5f5f5; --c-card-border: #e5e5e5;
+            --c-card-border-hover: #bbb; --c-tag-bg: #efefef; --c-tag: #666; --c-tag-border: #ddd;
+            --c-toolbar-bg: #f0f0f0; --c-toolbar-border: #e5e5e5; --c-btn-active: #e0e0e0;
+            --c-dim: #ccc; --c-arrow: #999; --c-soon-bg: #f5f5f5; --c-soon-text: #bbb;
+        }
         body {
-            background-color: #050505;
-            color: #ffffff;
+            background-color: var(--c-bg);
+            color: var(--c-text);
             font-family: 'Space Grotesk', sans-serif;
+            transition: background-color 0.2s, color 0.2s;
         }
     </style>
   </head>
