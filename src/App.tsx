@@ -91,7 +91,7 @@ function App() {
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-6 py-16">
+    <div className="min-h-[100dvh] flex flex-col items-center px-6 py-16">
       <div className="w-full max-w-[700px] flex flex-col flex-1">
 
         {/* Header */}
