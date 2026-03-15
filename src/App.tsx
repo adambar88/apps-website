@@ -55,9 +55,14 @@ const IconDrawer = () => (
 
 function App() {
   const [view, setView] = useState<View>('list')
-  const [theme, setTheme] = useState<'dark' | 'light'>(() =>
-    (localStorage.getItem('barczynski-theme') as 'dark' | 'light') || 'dark'
-  )
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const urlTheme = new URLSearchParams(window.location.search).get('theme') as 'dark' | 'light' | null
+    if (urlTheme === 'light' || urlTheme === 'dark') {
+      localStorage.setItem('barczynski-theme', urlTheme)
+      return urlTheme
+    }
+    return (localStorage.getItem('barczynski-theme') as 'dark' | 'light') || 'dark'
+  })
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -75,7 +80,7 @@ function App() {
           <div className="font-bold text-lg tracking-tight">
             apps.barczynski<span style={{ color: 'var(--c-muted)', fontWeight: 400 }}>.dev</span>
           </div>
-          <a href="https://barczynski.dev" className="text-xs transition-colors" style={{ color: 'var(--c-muted)' }}
+          <a href={`https://barczynski.dev?theme=${theme}`} className="text-xs transition-colors" style={{ color: 'var(--c-muted)' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--c-text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--c-muted)')}>
             ← barczynski.dev
