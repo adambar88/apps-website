@@ -59,6 +59,9 @@ function App() {
     const urlTheme = new URLSearchParams(window.location.search).get('theme') as 'dark' | 'light' | null
     if (urlTheme === 'light' || urlTheme === 'dark') {
       localStorage.setItem('barczynski-theme', urlTheme)
+      const url = new URL(window.location.href)
+      url.searchParams.delete('theme')
+      history.replaceState(null, '', url.pathname + (url.search || ''))
       return urlTheme
     }
     return (localStorage.getItem('barczynski-theme') as 'dark' | 'light') || 'dark'
