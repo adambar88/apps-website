@@ -16,6 +16,17 @@ const Icon2048 = () => (
   </svg>
 )
 
+// Snake icon — 4 segments in an S-curve
+const IconSnake = () => (
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <rect width="36" height="36" rx="6" fill="currentColor" fillOpacity="0.12" />
+    <rect x="8" y="10" width="7" height="7" rx="2" fill="currentColor" />
+    <rect x="15" y="10" width="7" height="7" rx="2" fill="currentColor" fillOpacity="0.6" />
+    <rect x="15" y="17" width="7" height="7" rx="2" fill="currentColor" fillOpacity="0.4" />
+    <rect x="22" y="17" width="7" height="7" rx="2" fill="currentColor" fillOpacity="0.25" />
+  </svg>
+)
+
 const apps: AppEntry[] = [
   {
     title: '2048',
@@ -23,6 +34,13 @@ const apps: AppEntry[] = [
     path: '/2048/',
     tags: ['game', 'react'],
     icon: <Icon2048 />,
+  },
+  {
+    title: 'Snake',
+    description: 'The classic snake game. Eat food, grow longer — three speeds, stats tracking, and keyboard or swipe controls.',
+    path: '/snake/',
+    tags: ['game', 'react'],
+    icon: <IconSnake />,
   },
 ]
 
