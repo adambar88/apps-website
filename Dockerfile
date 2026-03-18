@@ -37,6 +37,12 @@ COPY --from=build-hub /app/dist/ /usr/share/nginx/html/
 COPY --from=build-snake /app/dist/ /usr/share/nginx/html/snake/
 COPY --from=build-2048  /app/dist/ /usr/share/nginx/html/2048/
 
+# Debug: verify file structure
+RUN echo "=== Hub ===" && ls -la /usr/share/nginx/html/ && \
+    echo "=== Hub assets ===" && ls -la /usr/share/nginx/html/assets/ && \
+    echo "=== Snake ===" && ls -la /usr/share/nginx/html/snake/ && \
+    echo "=== 2048 ===" && ls -la /usr/share/nginx/html/2048/
+
 EXPOSE 80
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
