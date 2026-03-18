@@ -4,7 +4,7 @@
 FROM node:20-alpine AS build-snake
 WORKDIR /app
 RUN apk add --no-cache git
-ADD https://api.github.com/repos/adambar88/snake/git/refs/heads/main /tmp/snake-version
+RUN git ls-remote https://github.com/adambar88/snake.git main > /tmp/snake-version
 RUN git clone https://github.com/adambar88/snake.git .
 RUN npm ci && npm run build
 
@@ -12,7 +12,7 @@ RUN npm ci && npm run build
 FROM node:20-alpine AS build-2048
 WORKDIR /app
 RUN apk add --no-cache git
-ADD https://api.github.com/repos/adambar88/2048/git/refs/heads/main /tmp/2048-version
+RUN git ls-remote https://github.com/adambar88/2048.git main > /tmp/2048-version
 RUN git clone https://github.com/adambar88/2048.git .
 RUN npm ci && npm run build
 
