@@ -16,6 +16,16 @@ const Icon2048 = () => (
   </svg>
 )
 
+// Shopping cart icon
+const IconShopping = () => (
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+    <rect width="36" height="36" rx="6" fill="currentColor" fillOpacity="0.12" />
+    <path d="M8 10h2l2.5 11h12l2-8H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="16" cy="25" r="1.5" fill="currentColor" />
+    <circle cx="22" cy="25" r="1.5" fill="currentColor" />
+  </svg>
+)
+
 // Snake icon — 4 segments in an S-curve
 const IconSnake = () => (
   <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -28,6 +38,13 @@ const IconSnake = () => (
 )
 
 const apps: AppEntry[] = [
+  {
+    title: 'Shopping List',
+    description: 'Shared shopping list for the household. Real-time sync, categories, templates and history.',
+    path: '/shopping/',
+    tags: ['app', 'react'],
+    icon: <IconShopping />,
+  },
   {
     title: '2048',
     description: 'The classic sliding puzzle game. Merge tiles to reach 2048 — with multiple grid sizes and a challenge mode.',
