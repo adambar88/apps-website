@@ -8,39 +8,21 @@ interface AppEntry {
   icon: React.ReactNode
 }
 
-// 2048 mini tile icon
-const Icon2048 = () => (
+// Camera Monitor icon
+const IconCamera = () => (
   <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
     <rect width="36" height="36" rx="6" fill="currentColor" fillOpacity="0.12" />
-    <text x="18" y="24" textAnchor="middle" fontSize="13" fontWeight="700" fontFamily="Space Grotesk, sans-serif" fill="currentColor">2048</text>
-  </svg>
-)
-
-// Snake icon — 4 segments in an S-curve
-const IconSnake = () => (
-  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-    <rect width="36" height="36" rx="6" fill="currentColor" fillOpacity="0.12" />
-    <rect x="8" y="10" width="7" height="7" rx="2" fill="currentColor" />
-    <rect x="15" y="10" width="7" height="7" rx="2" fill="currentColor" fillOpacity="0.6" />
-    <rect x="15" y="17" width="7" height="7" rx="2" fill="currentColor" fillOpacity="0.4" />
-    <rect x="22" y="17" width="7" height="7" rx="2" fill="currentColor" fillOpacity="0.25" />
+    <path fill="currentColor" d="M25 12h-2.5l-1.5-2h-6l-1.5 2H11c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V14c0-1.1-.9-2-2-2Zm-7 11c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5Zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3Z" />
   </svg>
 )
 
 const apps: AppEntry[] = [
   {
-    title: '2048',
-    description: 'A classic 2048 puzzle game.',
-    path: '/2048/',
-    tags: ['puzzle', 'casual'],
-    icon: <Icon2048 />
-  },
-  {
-    title: 'Snake',
-    description: 'A classic Snake game.',
-    path: '/snake/',
-    tags: ['arcade', 'retro'],
-    icon: <IconSnake />
+    title: 'Camera Monitor',
+    description: 'Private baby/child monitor PWA — WebRTC P2P streaming.',
+    path: '/camera/',
+    tags: ['webrtc', 'pwa'],
+    icon: <IconCamera />
   }
 ]
 
