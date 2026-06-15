@@ -30,18 +30,18 @@ const IconSnake = () => (
 const apps: AppEntry[] = [
   {
     title: '2048',
-    description: 'The classic sliding puzzle game. Merge tiles to reach 2048 — with multiple grid sizes and a challenge mode.',
+    description: 'A classic 2048 puzzle game.',
     path: '/2048/',
-    tags: ['game', 'react'],
-    icon: <Icon2048 />,
+    tags: ['puzzle', 'casual'],
+    icon: <Icon2048 />
   },
   {
     title: 'Snake',
-    description: 'The classic snake game. Eat food, grow longer — three speeds, stats tracking, and keyboard or swipe controls.',
+    description: 'A classic Snake game.',
     path: '/snake/',
-    tags: ['game', 'react'],
-    icon: <IconSnake />,
-  },
+    tags: ['arcade', 'retro'],
+    icon: <IconSnake />
+  }
 ]
 
 type View = 'list' | 'grid' | 'compact' | 'drawer'
