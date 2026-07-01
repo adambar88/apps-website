@@ -102,7 +102,7 @@ function App() {
           <a href={`https://barczynski.dev?theme=${theme}`} className="text-xs transition-colors" style={{ color: 'var(--c-muted)' }}
             onMouseEnter={e => (e.currentTarget.style.color = 'var(--c-text)')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--c-muted)')}>
-            ← barczynski.dev
+            &larr; barczynski.dev
           </a>
         </header>
 
