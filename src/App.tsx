@@ -19,7 +19,7 @@ const IconCamera = () => (
 const apps: AppEntry[] = [
   {
     title: 'Camera Monitor',
-    description: 'Turn any two devices into a baby monitor — one watches, one streams, completely privately.',
+    description: 'Turn any two devices into a baby monitor. One watches, one streams, completely privately.',
     path: '/camera/',
     tags: ['webrtc', 'pwa'],
     icon: <IconCamera />
