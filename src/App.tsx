@@ -8,23 +8,7 @@ interface AppEntry {
   icon: React.ReactNode
 }
 
-// Camera Monitor icon
-const IconCamera = () => (
-  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-    <rect width="36" height="36" rx="6" fill="currentColor" fillOpacity="0.12" />
-    <path fill="currentColor" d="M25 12h-2.5l-1.5-2h-6l-1.5 2H11c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V14c0-1.1-.9-2-2-2Zm-7 11c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5Zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3Z" />
-  </svg>
-)
-
-const apps: AppEntry[] = [
-  {
-    title: 'Camera Monitor',
-    description: 'Turn any two devices into a baby monitor. One watches, one streams, completely privately.',
-    path: '/camera/',
-    tags: ['webrtc', 'pwa'],
-    icon: <IconCamera />
-  }
-]
+const apps: AppEntry[] = []
 
 type View = 'list' | 'grid' | 'compact' | 'drawer'
 
